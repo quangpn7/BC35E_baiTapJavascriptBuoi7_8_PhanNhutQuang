@@ -264,11 +264,3 @@ function comparePosNeg(array) {
     document.getElementById("resultB10").innerHTML = `Số dương = Số âm`;
   }
 }
-$(document).scroll(function () {
-  var y = $(this).scrollTop();
-  if (y > 300) {
-    $(".bottomMenu").fadeIn();
-  } else {
-    $(".bottomMenu").fadeOut();
-  }
-});
