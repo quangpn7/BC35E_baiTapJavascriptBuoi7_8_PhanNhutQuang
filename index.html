@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bài Tập Mảng Javascript</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        font-family: "Monaco", "Courier New", Courier, monospace;
+      }
+      .bottomMenu {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 60px;
+        border-top: 1px solid #000;
+        background: red;
+        z-index: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="container mt-5 pb-5 text-center bg-light shadow px-0 rounded overflow-hidden"
+    >
+      <!-- HEADER -->
+      <div class="bottomMenu">ABC</div>
+      <header class="bg-info py-4 font-weight-bold">
+        <h1>BÀI TẬP MẢNG (ARRAY) JAVASCRIPT</h1>
+        <p class="text-left ml-5 mb-0">Phan Nhựt Quang</p>
+        <p class="text-left ml-5 mt-0">BC35E</p>
+      </header>
+      <hr class="p-0 m-0" />
+      <!-- CONTENT -->
+      <!-- DISPLAY INPUTED ZONE -->
+      <div class="inputed text-center pt-5">
+        <p class="display-4 text-uppercase">Inputed Number</p>
+        <p id="inputedNum" class="display-4"></p>
+      </div>
+      <div class="input d-flex align-items-center justify-content-center">
+        <input type="number" id="inputNum" class="mr-3" />
+        <button class="btn btn-success" id="btnInput" onclick="inputNewNum()">
+          Push
+        </button>
+        <button
+          class="btn btn-success ml-3"
+          id="btnRemove"
+          onclick="removeLast()"
+        >
+          Remove last
+        </button>
+
+        <button class="btn btn-success ml-3" id="btnClear" onclick="clea()">
+          Clear
+        </button>
+      </div>
+    </div>
+    <!-- EXERCISES -->
+    <div class="mt-5"></div>
+
+    <div class="container">
+      <!-- BÀI 1 -->
+
+      <button
+        class="btn btn-primary w-100"
+        type="button"
+        data-toggle="collapse"
+        data-target="#bai1"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        1. Tổng các phần tử
+      </button>
+
+      <div class="collapse w-100 mt-2" id="bai1">
+        <div class="card card-body">
+          <button
+            class="btn btn-primary w-25 mx-auto"
+            id="btnBai1"
+            onclick="sumPositiveNum(arrayNum)"
+          >
+            Tính
+          </button>
+          <div class="card-footer rounded mt-3">
+            <p class="mb-0">
+              Tổng các số đã nhập:
+              <span id="resultB1" class="text-danger font-weight-bold"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- BÀI 2 -->
+      <button
+        class="btn btn-primary w-100 mt-2"
+        type="button"
+        data-toggle="collapse"
+        data-target="#bai2"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        2. Đếm số dương
+      </button>
+
+      <div class="collapse w-100 mt-2" id="bai2">
+        <div class="card card-body">
+          <button
+            class="btn btn-primary w-25 mx-auto"
+            id="btnBai2"
+            onclick="countPositive(arrayNum)"
+          >
+            Đếm
+          </button>
+          <div class="card-footer rounded mt-3">
+            <p class="mb-0 text-black">
+              Có tổng cộng:
+              <span id="resultB2" class="text-danger font-weight-bold"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- BÀI 3 -->
+      <button
+        class="btn btn-primary w-100 mt-2"
+        type="button"
+        data-toggle="collapse"
+        data-target="#bai3"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        3. Tìm số nhỏ nhất
+      </button>
+
+      <div class="collapse w-100 mt-2" id="bai3">
+        <div class="card card-body">
+          <div class="d-flex justify-content-center">
+            <button
+              class="btn btn-primary w-25 mx-auto"
+              id="btnBai3"
+              onclick="findMin(arrayNum)"
+            >
+              Tìm (CÁCH 1)
+              <span class="small font-italic">*Sử dụng loop</span>
+            </button>
+            <button
+              class="btn btn-primary w-25 mx-auto mx-2"
+              id="btnBai3"
+              onclick="findMin2(arrayNum)"
+            >
+              Tìm (CÁCH 2)
+              <span class="small font-italic">*Sử dụng sort()</span>
+            </button>
+          </div>
+          <div class="card-footer rounded mt-3">
+            <p class="mb-0 text-black">
+              Số nhỏ nhất là:
+              <span id="resultB3" class="text-danger font-weight-bold"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- BÀI 4 -->
+      <button
+        class="btn btn-primary w-100 mt-2"
+        type="button"
+        data-toggle="collapse"
+        data-target="#bai4"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        4. Tìm số dương nhỏ nhất
+      </button>
+
+      <div class="collapse w-100 mt-2" id="bai4">
+        <div class="card card-body">
+          <button
+            class="btn btn-primary w-25 mx-auto"
+            id="btnBai4"
+            onclick="minPositive(arrayNum)"
+          >
+            Tìm
+          </button>
+          <div class="card-footer rounded mt-3">
+            <p class="mb-0 text-black">
+              Số dương nhỏ nhất là:
+              <span id="resultB4" class="text-danger font-weight-bold"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- BÀI 5 -->
+      <button
+        class="btn btn-primary w-100 mt-2"
+        type="button"
+        data-toggle="collapse"
+        data-target="#bai5"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        5. Tìm số chẵn cuối cùng
+      </button>
+
+      <div class="collapse w-100 mt-2" id="bai5">
+        <div class="card card-body">
+          <button
+            class="btn btn-primary w-25 mx-auto"
+            id="btnBai5"
+            onclick="lastEvenNum(arrayNum)"
+          >
+            Tính
+          </button>
+          <div class="card-footer rounded mt-3">
+            <p class="mb-0">
+              Số chẵn cuối cùng là:
+              <span id="resultB5" class="text-danger font-weight-bold"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- BÀI 6 -->
+      <button
+        class="btn btn-primary w-100 mt-2"
+        type="button"
+        data-toggle="collapse"
+        data-target="#bai6"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        6. Đổi chỗ
+      </button>
+
+      <div class="collapse w-100 mt-2" id="bai6">
+        <div class="card card-body">
+          <div class="card-footer rounded mt-3">
+            <div class="my-3 text-center">
+              <input
+                type="number"
+                class="rounded"
+                id="numIndex1"
+                placeholder="Ví trí số thứ nhất"
+              />
+              <input
+                type="number"
+                class="rounded"
+                id="numIndex2"
+                placeholder="Vị trí số thứ hai"
+              />
+            </div>
+            <div class="text-center">
+              <button
+                class="btn btn-primary w-25 mx-auto mb-3"
+                id="btnBai6"
+                onclick="swapIndex(arrayNum)"
+              >
+                ĐỔI CHỖ
+              </button>
+            </div>
+            <p class="mb-0">
+              Mãng sau khi đã đổi chỗ:
+              <span id="resultB6" class="text-danger font-weight-bold"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- BÀI 7 -->
+      <button
+        class="btn btn-primary w-100 mt-2"
+        type="button"
+        data-toggle="collapse"
+        data-target="#bai7"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        7. Sắp xếp tăng dần
+      </button>
+
+      <div class="collapse w-100 mt-2" id="bai7">
+        <div class="card card-body">
+          <button
+            class="btn btn-primary w-25 mx-auto"
+            id="btnBai7"
+            onclick="arraySortIncrease(arrayNum)"
+          >
+            SẮP XẾP
+          </button>
+          <div class="card-footer rounded mt-3">
+            <p class="mb-0 text-black">
+              Mảng sau khi đã sắp xếp:
+              <span id="resultB7" class="text-danger font-weight-bold"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- BÀI 8 -->
+      <button
+        class="btn btn-primary w-100 mt-2"
+        type="button"
+        data-toggle="collapse"
+        data-target="#bai8"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        8 .Tìm số nguyên tố đầu tiên
+      </button>
+
+      <div class="collapse w-100 mt-2" id="bai8">
+        <div class="card card-body">
+          <button
+            class="btn btn-primary w-25 mx-auto"
+            id="btnBai8"
+            onclick="firstPrime(arrayNum)"
+          >
+            TÌM
+          </button>
+          <div class="card-footer rounded mt-3">
+            <p class="mb-0 text-black">
+              Số nguyên tố đầu tiên trong dãy là:
+              <span id="resultB8" class="text-danger font-weight-bold"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- BÀI 9 -->
+      <button
+        class="btn btn-primary w-100 mt-2"
+        type="button"
+        data-toggle="collapse"
+        data-target="#bai9"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        9. Đếm số nguyên
+      </button>
+
+      <div class="collapse w-100 mt-2" id="bai9">
+        <div class="card card-body">
+          <button
+            class="btn btn-primary w-25 mx-auto"
+            id="btnBai9"
+            onclick="arrayInteger(arrayNum)"
+          >
+            ĐẾM
+          </button>
+          <div class="card-footer rounded mt-3">
+            <p class="mb-0 text-black">
+              Trong mảng có:
+              <span id="resultB9" class="text-danger font-weight-bold"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- BÀI 10 -->
+      <button
+        class="btn btn-primary w-100 mt-2"
+        type="button"
+        data-toggle="collapse"
+        data-target="#bai10"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        10. So sánh lượng số âm và dương
+      </button>
+
+      <div class="collapse w-100 mt-2" id="bai10">
+        <div class="card card-body">
+          <button
+            class="btn btn-primary w-25 mx-auto"
+            id="btnBai10"
+            onclick="comparePosNeg(arrayNum)"
+          >
+            SO SÁNH
+          </button>
+          <div class="card-footer rounded mt-3">
+            <p class="mb-0 text-black">
+              Kết quả:
+              <span id="resultB10" class="text-danger font-weight-bold"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-5"></div>
+    <div class="mb-5"></div>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
