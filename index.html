@@ -48,10 +48,12 @@
       <!-- DISPLAY INPUTED ZONE -->
       <div class="inputed text-center pt-5">
         <p class="display-4 text-uppercase">Inputed Number</p>
-        <p id="inputedNum" class="display-4"></p>
+        <p id="inputedNum" class="display-4 text-break"></p>
       </div>
-      <div class="input d-flex align-items-center justify-content-center">
-        <input type="number" id="inputNum" class="mr-3" />
+      <div
+        class="container input d-flex align-items-center justify-content-center"
+      >
+        <input type="number" id="inputNum" class="mr-3 w-25" />
         <button class="btn btn-success" id="btnInput" onclick="inputNewNum()">
           Push
         </button>
@@ -60,7 +62,7 @@
           id="btnRemove"
           onclick="removeLast()"
         >
-          Remove last
+          Remove
         </button>
 
         <button class="btn btn-success ml-3" id="btnClear" onclick="clea()">

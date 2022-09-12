@@ -7,7 +7,7 @@
 */
 
 //Tạo array
-var arrayNum = [];
+var arrayNum = [1, 2, 3, 4, 5, 6, 7, 8, 1];
 document.getElementById("inputedNum").innerHTML = arrayNum;
 //FUNCTION THÊM SỐ
 function inputNewNum() {
