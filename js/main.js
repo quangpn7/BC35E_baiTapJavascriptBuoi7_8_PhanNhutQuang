@@ -9,10 +9,19 @@
 //Tạo array
 var arrayNum = [];
 document.getElementById("inputedNum").innerHTML = arrayNum;
+
+/**Hàm update Length của array. Mục đích của việc này là khi cần sử dụng length trong vòng lặp, nó sẽ hạn chế được việc phải arrayLen nhiều lần mà chỉ cần có 1 con số cụ thể */
+
+function updateArrLen() {
+  var arrayLen = arrayNum.length;
+  return arrayLen;
+}
+
 //FUNCTION THÊM SỐ
 function inputNewNum() {
   arrayNum.push(document.getElementById("inputNum").value * 1);
   document.getElementById("inputedNum").innerHTML = arrayNum;
+  arrayLen = updateArrLen();
   document.getElementById("inputNum").value = "";
   document.getElementById("inputNum").focus();
 }
@@ -24,12 +33,13 @@ document.getElementById("inputNum").addEventListener("keypress", function (e) {
 //FUNCTION REMOVE SỐ
 function removeLast() {
   arrayNum.pop();
+  arrayLen = updateArrLen();
   document.getElementById("inputedNum").innerHTML = arrayNum;
 }
 //FUNCTION CLEAR
 function clea() {
-  console.log(123);
   arrayNum = [];
+  arrayLen = updateArrLen();
   document.getElementById("inputedNum").innerHTML = arrayNum;
 }
 
@@ -41,7 +51,7 @@ function clea() {
  */
 
 function sumPositiveNum(array) {
-  for (var sum = 0, i = 0; i < array.length; i++) {
+  for (var sum = 0, i = 0; i < arrayLen; i++) {
     if (arrayNum[i] >= 0) {
       sum += arrayNum[i];
     }
@@ -57,7 +67,7 @@ function sumPositiveNum(array) {
 + Duyệt arryNum, nếu phần tử nào lớn hơn 0 thì += vào soDuongCount */
 
 function countPositive(array) {
-  for (var posCounted = 0, i = 0; i < array.length; i++) {
+  for (var posCounted = 0, i = 0; i < arrayLen; i++) {
     if (array[i] > 0) {
       posCounted += 1;
     }
@@ -74,7 +84,7 @@ function countPositive(array) {
 + Duyệt mảng arryNum với i = 1, bước nhảy i++
 + Nếu có phần tử nào lớn bé hơn minNumber thì minNumber = arryNum[i]*/
 function findMin(array) {
-  for (var minNum = array[0], i = 1; i < array.length; i++) {
+  for (var minNum = array[0], i = 1; i < arrayLen; i++) {
     if (minNum > array[i]) {
       minNum = array[i];
     }
@@ -114,7 +124,7 @@ function findMin2(array) {
 //FUNCTION TẠO RA MẢNG CÁC SỐ DƯƠNG
 function positiveArray(array) {
   var positiveNumArray = [];
-  for (var i = 0; i < array.length; i++) {
+  for (var i = 0; i < arrayLen; i++) {
     if (array[i] > 0) {
       positiveNumArray.push(array[i]);
     }
@@ -124,7 +134,7 @@ function positiveArray(array) {
 //FUNCTION TẠO RA MẢNG CÁC SỐ ÂM (SỬ DỤNG SAU)
 function negativeArray(array) {
   var negativeNumArray = [];
-  for (var i = 0; i < array.length; i++) {
+  for (var i = 0; i < arrayLen; i++) {
     if (array[i] < 0) {
       negativeNumArray.push(array[i]);
     }
@@ -149,7 +159,7 @@ function minPositive(array) {
  */
 
 function lastEvenNum(array) {
-  for (var lastEven = "Dãy không có số chẵn", i = 0; i < array.length; i++) {
+  for (var lastEven = "Dãy không có số chẵn", i = 0; i < arrayLen; i++) {
     if (array[i] % 2 == 0) {
       lastEven = array[i];
     }
@@ -176,7 +186,7 @@ Gán các giá trị vào arraySwapped
 
 function swapIndex(array) {
   var arraySwapped = array;
-
+  console.log(array);
   var numIndex1 = document.getElementById("numIndex1").value * 1;
   var numIndex2 = document.getElementById("numIndex2").value * 1;
 
@@ -185,10 +195,12 @@ function swapIndex(array) {
 
   arraySwapped[numIndex1] = num2;
   arraySwapped[numIndex2] = num1;
-  console.log(arraySwapped);
 
+  document.getElementById("resultB6").innerHTML = arraySwapped;
+  arraySwapped = array; //Reset lại arraySwapped để có thể đảo tiếp
+  //PHẦN NÀY NHỜ MENTOR HỖ TRỢ MÌNH: Mình muốn cái array gốc của mình không bị thay dổi nhưng sau khi chạy hàm này thì
+  console.log(arraySwapped);
   console.log(array);
-  return (document.getElementById("resultB6").innerHTML = arraySwapped);
 }
 //-----------------------------------------------------------------
 
@@ -220,9 +232,10 @@ function isPrime(input) {
 }
 //FUNCTION TÌM SỐ NGUYÊN TỐ ĐẦU TIÊN
 function firstPrime(array) {
+  console.log(array);
   for (
     var firstPrimeNum = "Trong dãy không có số nguyên tố", i = 0;
-    i < array.length;
+    i < arrayLen;
     i++
   ) {
     if (isPrime(array[i]) == true) {
@@ -240,7 +253,7 @@ function firstPrime(array) {
 
 function arrayInteger(array) {
   var countInt = 0;
-  for (var i = 0; i < array.length; i++) {
+  for (var i = 0; i < arrayLen; i++) {
     if (Number.isInteger(array[i]) == true) {
       countInt += 1;
     }
